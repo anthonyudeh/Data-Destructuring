@@ -1,4 +1,6 @@
-//ARRAYS, MAPS, OBJECTS, MODERN JS FEATURES LIKE DESTRUCTURING AND CHAINING , HOW TO WORK WITH STRINGS 
+'use strict';
+
+//ARRAYS, MAPS, OBJECTS, MODERN JS FEATURES LIKE DESTRUCTURING AND CHAINING, HOW TO WORK WITH STRINGS 
 
 
 //food delivery application 
@@ -41,7 +43,6 @@ console.log(third, fourth);
 
 let [main, secondary] = restaurant.startMenu;
 //Switch without destructuring 
-
 const temp = main;
 main = secondary;
 secondary = temp;
@@ -105,15 +106,154 @@ const newResturrant = {
             open: 12,
             close: 22,
         },
+    },
+
+    mainOrder: function (indexStarter, indexMain) {
+        return [this.mainCategory[indexStarter], this.deliveryFood[indexMain]]
+    },
+
+    orderDelivery: function (obj) {
+        console.log(obj)
+    },
+
+    //we can perform destructuring here 
+    freeDelivery: function ({ time, Address, indexStarter, indexMain }) {
+        console.log(`Your free deliver food comes with ${this.mainCategory[indexStarter]} and ${this.staterFood[indexMain]} at ${time} and at ${Address}`)
+    },
+
+    //we can also assign values to the destructured items, this works if there's no room to destructure
+
+    firstCustomer: function ({ time = '13:00', Address, indexStarter = 1, indexMain = 0 }) {
+        console.log(`As our first customer you are going to get ${this.mainCategory[indexStarter]} and ${this.deliveryFood[indexMain]} at ${time} and at ${Address}`)
+    },
+
+    pastaDelivery: function(ing1 = 'bucartinni', ing2 = 'Egg roll', ing3 = 'vegetables'){
+       console.log(`here is your delicious pasta made up of ${ing1}, ${ing2} and ${ing3}`)
+    }
+
+
+}
+
+newResturrant.orderDelivery({
+    time: '12:30',
+    Address: '36 chris Idowu',
+    indexStarter: 2,
+    indexMain: 3,
+})
+
+newResturrant.freeDelivery({
+    time: '12:30',
+    Address: '36 chris Idowu',
+    indexStarter: 2,
+    indexMain: 3,
+})
+
+newResturrant.firstCustomer({
+    Address: '36 chris Idowu',
+})
+
+
+/*
+
+const ingredients = [ prompt('Enter integredients to make pasta! Ingredient1?'), prompt('Enter integredients to make pasta! Ingredient2?'), prompt('Enter integredients to make pasta! Ingredient3?') ]; 
+//using spread operator
+console.log(newResturrant.pastaDelivery(...ingredients))
+console.log(newResturrant.pastaDelivery(ingredients[0], ingredients[1], ingredients[2]))
+
+*/
+
+
+//so here we have an object and inside the object we have another object, values and a method
+
+const { name, workHours, mainCategory } = newResturrant
+
+console.log(name, workHours, mainCategory);
+//so in object we use the curling braces const{ } to destructure but when you want to destructure an array it is const [], Also in objects you pass in the values in the object you want to destructure const {location, name, ...} = name of the object 
+
+//but in array that deals with position you can use any varaible name const [x,,y,[i,j]] = name of the array
+
+//so now in an object you see that the variable names are same with the name of values we want to destructure in the obj Example 
+const { staterFood, deliveryFood } = newResturrant;
+console.log(staterFood, deliveryFood)
+
+//so now for use to reassign the variables this is what we will do
+const { menu = [], staterFood: starters = [], deliveryFood: tasty=[] } = newResturrant;
+console.log(menu, starters, tasty);
+
+//mutating variables while destructuring objects
+let d = 111;
+let e = 999;
+const obj = { d: 23, e: 42, f: 20 };
+//to overide d and e and destructure
+({ d, e } = obj); //we have mutated the original values of d and e
+console.log(d, e)
+
+
+//Destructuring nested Objects  
+const { fri } = workHours;
+console.log(fri);
+
+//to destructure the open and close values 
+const { thur: { open, close } } = workHours;
+console.log(open, close);
+
+
+//SPREAD OPERATOR
+const arr = [7,8,9];
+//creating a new array from an exisiting array 
+
+const newArr = [1,20,35, arr[0], arr[1], arr[2]]; 
+console.log(newArr);
+
+//ES6 format using the spread operator 
+const newArrES = [1, 20 , 35 , ...arr]; 
+console.log(newArrES);
+
+//if you want to log the individual elements of the array 
+console.log(...newArrES); //when we new the elements of the array individually
+
+
+const newStartedFood = [...staterFood, 'Lemon', 'Tea', 'Potato Chips']; 
+console.log(... newStartedFood);
+
+
+//use cases of spread operator 
+//copy array 
+const mainStartedFood = [...staterFood]; 
+
+//join 2 arrays 
+const generalStartedFood = [...mainStartedFood, ...newStartedFood];
+
+
+//Iterables: arrays, strings, maps, sets .NOT objects
+
+const str = 'Hello';
+const letters = [...str, ' ' , 'S.'];
+console.log(letters);
+
+//so we can't a spread operator inside template string ${...str} this will not work because the template literal is not expecting multiple information, so we use this when we have an argument or an array
+
+//using a spread operator inside an object to create a new object. 
+
+const exclusiveRestaurant = {
+    ...newResturrant, 
+    churchDays: {
+        charismaicHour: 'Tuesday', 
+        bibleStudy: 'Thursday', 
+        lightFellowship: 'Sunday'
+    }, 
+
+    churchDeliveryFood: function(food1 = this.deliveryFood[0], Day1 = this.churchDays.charismaicHour){
+        console.log(`I am going to get ${food1} before going to church on ${Day1}`);
     }
 }
 
+console.log(exclusiveRestaurant);
+exclusiveRestaurant.churchDeliveryFood();
+
+const newExclResCopy = {...exclusiveRestaurant};
+newExclResCopy.churchDays.lightFellowship = 'Wednesday'; 
+console.log(newExclResCopy);
 
 
-
-
-
-
-
-
-
+//Rest Pattern 
