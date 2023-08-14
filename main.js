@@ -127,8 +127,13 @@ const newResturrant = {
         console.log(`As our first customer you are going to get ${this.mainCategory[indexStarter]} and ${this.deliveryFood[indexMain]} at ${time} and at ${Address}`)
     },
 
-    pastaDelivery: function(ing1 = 'bucartinni', ing2 = 'Egg roll', ing3 = 'vegetables'){
-       console.log(`here is your delicious pasta made up of ${ing1}, ${ing2} and ${ing3}`)
+    pastaDelivery: function (ing1 = 'bucartinni', ing2 = 'Egg roll', ing3 = 'vegetables') {
+        console.log(`here is your delicious pasta made up of ${ing1}, ${ing2} and ${ing3}`)
+    }, 
+
+    orderPizza: function(mainIng, ...otherIng){
+        console.log(mainIng);
+        console.log(otherIng);
     }
 
 
@@ -160,8 +165,7 @@ const ingredients = [ prompt('Enter integredients to make pasta! Ingredient1?'),
 console.log(newResturrant.pastaDelivery(...ingredients))
 console.log(newResturrant.pastaDelivery(ingredients[0], ingredients[1], ingredients[2]))
 
-*/
-
+*/ 
 
 //so here we have an object and inside the object we have another object, values and a method
 
@@ -177,7 +181,7 @@ const { staterFood, deliveryFood } = newResturrant;
 console.log(staterFood, deliveryFood)
 
 //so now for use to reassign the variables this is what we will do
-const { menu = [], staterFood: starters = [], deliveryFood: tasty=[] } = newResturrant;
+const { menu = [], staterFood: starters = [], deliveryFood: tasty = [] } = newResturrant;
 console.log(menu, starters, tasty);
 
 //mutating variables while destructuring objects
@@ -199,27 +203,27 @@ console.log(open, close);
 
 
 //SPREAD OPERATOR
-const arr = [7,8,9];
+const arr = [7, 8, 9];
 //creating a new array from an exisiting array 
 
-const newArr = [1,20,35, arr[0], arr[1], arr[2]]; 
+const newArr = [1, 20, 35, arr[0], arr[1], arr[2]];
 console.log(newArr);
 
 //ES6 format using the spread operator 
-const newArrES = [1, 20 , 35 , ...arr]; 
+const newArrES = [1, 20, 35, ...arr];
 console.log(newArrES);
 
 //if you want to log the individual elements of the array 
 console.log(...newArrES); //when we new the elements of the array individually
 
 
-const newStartedFood = [...staterFood, 'Lemon', 'Tea', 'Potato Chips']; 
-console.log(... newStartedFood);
+const newStartedFood = [...staterFood, 'Lemon', 'Tea', 'Potato Chips'];
+console.log(...newStartedFood);
 
 
 //use cases of spread operator 
 //copy array 
-const mainStartedFood = [...staterFood]; 
+const mainStartedFood = [...staterFood];
 
 //join 2 arrays 
 const generalStartedFood = [...mainStartedFood, ...newStartedFood];
@@ -228,7 +232,7 @@ const generalStartedFood = [...mainStartedFood, ...newStartedFood];
 //Iterables: arrays, strings, maps, sets .NOT objects
 
 const str = 'Hello';
-const letters = [...str, ' ' , 'S.'];
+const letters = [...str, ' ', 'S.'];
 console.log(letters);
 
 //so we can't a spread operator inside template string ${...str} this will not work because the template literal is not expecting multiple information, so we use this when we have an argument or an array
@@ -236,14 +240,14 @@ console.log(letters);
 //using a spread operator inside an object to create a new object. 
 
 const exclusiveRestaurant = {
-    ...newResturrant, 
+    ...newResturrant,
     churchDays: {
-        charismaicHour: 'Tuesday', 
-        bibleStudy: 'Thursday', 
+        charismaicHour: 'Tuesday',
+        bibleStudy: 'Thursday',
         lightFellowship: 'Sunday'
-    }, 
+    },
 
-    churchDeliveryFood: function(food1 = this.deliveryFood[0], Day1 = this.churchDays.charismaicHour){
+    churchDeliveryFood: function (food1 = this.deliveryFood[0], Day1 = this.churchDays.charismaicHour) {
         console.log(`I am going to get ${food1} before going to church on ${Day1}`);
     }
 }
@@ -251,9 +255,133 @@ const exclusiveRestaurant = {
 console.log(exclusiveRestaurant);
 exclusiveRestaurant.churchDeliveryFood();
 
-const newExclResCopy = {...exclusiveRestaurant};
-newExclResCopy.churchDays.lightFellowship = 'Wednesday'; 
+const newExclResCopy = { ...exclusiveRestaurant };
+newExclResCopy.churchDays.lightFellowship = 'Wednesday';
 console.log(newExclResCopy);
 
 
 //Rest Pattern 
+// so for the rest pattern is has the same ... signature or notation like the spread operator but it used on the left hand side of the equality operator while the spread operator is used on the right side.
+
+const lst = [1, 3, 5, 8, 19, 20];
+const newLSt = [20, 70, 891, ...lst, 59]; //used on the right side 
+
+//now to destructure this newLst array we can use the rest pattern 
+const [, g, h, ...others] = [20, 70, 891, ...lst, 59]; // the rest patern on the left hand side of the equality operator and the spread operator on the right hand side of the equality operator
+console.log(g, h, others);
+
+//using rest pattern and spread operators inside an Array.
+const [pizza, risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.startMenu];
+console.log(pizza, risotto, otherFood);
+
+//using rest pattern and spread operators inside an Object.
+const { sat, ...weekdays } = newResturrant.workHours;
+console.log(sat, weekdays);
+
+//using rest pattern and spread operators inside a function.
+const add = function (...numbers) { //rest pattern taking multiple arguements 'rest arguments' and add them inside an array
+    let sum = 0
+    for (let i = 0; i < numbers.length; i++) 
+        sum += numbers[i];
+        console.log(sum);
+}
+add(2, 3, 20);
+add(5, 5, 6, 8, 9);
+add(5, 5, 6, 8, 9, 11, 13, 15);
+
+const v = [23, 5, 7]; 
+console.log(...v); 
+
+newResturrant.orderPizza('mushrooms', 'onion', 'olives', 'spinach'); 
+newResturrant.orderPizza('mushrooms')
+
+
+//AND and OR operators
+
+//OR operator
+//operators can be use with any data type , return any data type and short-circuiting or short-circuit evaluation
+
+console.log(3 || 'Jonas') // this is the meaning of short circuting and it returns the first value if it is a truthy value
+console.log(0 || 'Jonas') // it returns the first value if it is a truthy or else it returns the string 'Jonas'
+
+ console.log(undefined || null) //it returns a null because thats the end of short-circuiting 
+
+ console.log(undefined || 0 || '' || 'Hello' || 23 || null) //it returns Hello because hello string is first truthy value; 
+
+
+ const guest1 = newResturrant.Guest1 ? newResturrant.Guest1 : 10; 
+ console.log(guest1);
+
+ const guest2 = newResturrant.location || 10; //newResturrant.location has a string of an address which is a truthy value thats why we having an address to the console   
+console.log(guest2);
+
+newResturrant.Guest2 = 23; 
+const guest3 = newResturrant.Guest2 || 10; 
+console.log(guest3);
+
+newResturrant.Guest3 = 0; 
+const guest4 = newResturrant.Guest3 || 15;  //because '0' is a falsy value. 
+console.log(guest4); //we will come up with a solution for this later 
+
+
+//AND operator 
+
+console.log(0 && 'jonas') //this is more strict than the or operator if the first value is a falsy value it immediately returns the falsy value to the console without evaluting the second value. 
+
+console.log(7 && 'kelvin' && 23 && true)// the string is returned why because if the value before the last value is true short circuiting continues
+
+console.log(7 && 'kelvin' && 23 && true && null && 'Jonnas')
+  
+
+if(restaurant.orderPizza){
+    restaurant.orderPizza('mushrooms', 'spinach')
+}
+
+//nulling 
+
+newResturrant.Guest4 = 0; 
+const guest5 = newResturrant.Guest4 || 10; 
+console.log(guest5); // on the console 10 ia going to log to the console because newResturrant.Guest4 is assigned to 0 which is falsy value. 
+
+//so now to solve this 
+
+const guest6 = newResturrant.Guest4 ?? 10; //this is nullish coalasing operator 
+console.log(guest6); //'0' is logged to the console.
+
+//Logical Assignment Operators (introduced in ES2021)
+
+
+const resturantOne = {
+    name:'Capri', 
+    numGuests: 20
+}
+
+const resturantTwo = {
+    name:'La Piazza', 
+    owner: 'Giovanni Rossi'
+}
+
+resturantOne.numGuests = resturantOne.numGuests || 10;
+resturantTwo.numGuests = resturantTwo.numGuests || 10;
+console.log(resturantOne, resturantTwo); 
+
+
+//Or Logical Operator 
+//so what we have above we can do it in a more modern and concised way
+resturantOne ||= 10; 
+resturantTwo ||= 10; 
+console.log(resturantOne, resturantTwo);
+
+//for falsy values use this operator ??= 10 //nullish assignment operator which means null or undefined 
+
+//And Logical Operator 
+
+resturantTwo.owner = resturantTwo && '<ANONYMOUS>';
+resturantOne.owner = resturantOne && '<ANONYMOUS>';  //output undefined because owner is not a property
+console.log(resturantTwo, resturantOne)
+
+//shorthand for AND logical operator 
+resturantTwo.owner &&= '<ANONYMOUS>';
+
+
+
