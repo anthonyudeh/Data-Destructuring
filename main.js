@@ -129,9 +129,9 @@ const newResturrant = {
 
     pastaDelivery: function (ing1 = 'bucartinni', ing2 = 'Egg roll', ing3 = 'vegetables') {
         console.log(`here is your delicious pasta made up of ${ing1}, ${ing2} and ${ing3}`)
-    }, 
+    },
 
-    orderPizza: function(mainIng, ...otherIng){
+    orderPizza: function (mainIng, ...otherIng) {
         console.log(mainIng);
         console.log(otherIng);
     }
@@ -165,7 +165,7 @@ const ingredients = [ prompt('Enter integredients to make pasta! Ingredient1?'),
 console.log(newResturrant.pastaDelivery(...ingredients))
 console.log(newResturrant.pastaDelivery(ingredients[0], ingredients[1], ingredients[2]))
 
-*/ 
+*/
 
 //so here we have an object and inside the object we have another object, values and a method
 
@@ -281,18 +281,18 @@ console.log(sat, weekdays);
 //using rest pattern and spread operators inside a function.
 const add = function (...numbers) { //rest pattern taking multiple arguements 'rest arguments' and add them inside an array
     let sum = 0
-    for (let i = 0; i < numbers.length; i++) 
+    for (let i = 0; i < numbers.length; i++)
         sum += numbers[i];
-        console.log(sum);
+    console.log(sum);
 }
 add(2, 3, 20);
 add(5, 5, 6, 8, 9);
 add(5, 5, 6, 8, 9, 11, 13, 15);
 
-const v = [23, 5, 7]; 
-console.log(...v); 
+const v = [23, 5, 7];
+console.log(...v);
 
-newResturrant.orderPizza('mushrooms', 'onion', 'olives', 'spinach'); 
+newResturrant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 newResturrant.orderPizza('mushrooms')
 
 
@@ -304,22 +304,22 @@ newResturrant.orderPizza('mushrooms')
 console.log(3 || 'Jonas') // this is the meaning of short circuting and it returns the first value if it is a truthy value
 console.log(0 || 'Jonas') // it returns the first value if it is a truthy or else it returns the string 'Jonas'
 
- console.log(undefined || null) //it returns a null because thats the end of short-circuiting 
+console.log(undefined || null) //it returns a null because thats the end of short-circuiting 
 
- console.log(undefined || 0 || '' || 'Hello' || 23 || null) //it returns Hello because hello string is first truthy value; 
+console.log(undefined || 0 || '' || 'Hello' || 23 || null) //it returns Hello because hello string is first truthy value; 
 
 
- const guest1 = newResturrant.Guest1 ? newResturrant.Guest1 : 10; 
- console.log(guest1);
+const guest1 = newResturrant.Guest1 ? newResturrant.Guest1 : 10;
+console.log(guest1);
 
- const guest2 = newResturrant.location || 10; //newResturrant.location has a string of an address which is a truthy value thats why we having an address to the console   
+const guest2 = newResturrant.location || 10; //newResturrant.location has a string of an address which is a truthy value thats why we having an address to the console   
 console.log(guest2);
 
-newResturrant.Guest2 = 23; 
-const guest3 = newResturrant.Guest2 || 10; 
+newResturrant.Guest2 = 23;
+const guest3 = newResturrant.Guest2 || 10;
 console.log(guest3);
 
-newResturrant.Guest3 = 0; 
+newResturrant.Guest3 = 0;
 const guest4 = newResturrant.Guest3 || 15;  //because '0' is a falsy value. 
 console.log(guest4); //we will come up with a solution for this later 
 
@@ -331,16 +331,16 @@ console.log(0 && 'jonas') //this is more strict than the or operator if the firs
 console.log(7 && 'kelvin' && 23 && true)// the string is returned why because if the value before the last value is true short circuiting continues
 
 console.log(7 && 'kelvin' && 23 && true && null && 'Jonnas')
-  
 
-if(restaurant.orderPizza){
+
+if (restaurant.orderPizza) {
     restaurant.orderPizza('mushrooms', 'spinach')
 }
 
 //nulling 
 
-newResturrant.Guest4 = 0; 
-const guest5 = newResturrant.Guest4 || 10; 
+newResturrant.Guest4 = 0;
+const guest5 = newResturrant.Guest4 || 10;
 console.log(guest5); // on the console 10 ia going to log to the console because newResturrant.Guest4 is assigned to 0 which is falsy value. 
 
 //so now to solve this 
@@ -352,24 +352,24 @@ console.log(guest6); //'0' is logged to the console.
 
 
 const resturantOne = {
-    name:'Capri', 
+    name: 'Capri',
     numGuests: 20
 }
 
 const resturantTwo = {
-    name:'La Piazza', 
+    name: 'La Piazza',
     owner: 'Giovanni Rossi'
 }
 
 resturantOne.numGuests = resturantOne.numGuests || 10;
 resturantTwo.numGuests = resturantTwo.numGuests || 10;
-console.log(resturantOne, resturantTwo); 
+console.log(resturantOne, resturantTwo);
 
 
 //Or Logical Operator 
 //so what we have above we can do it in a more modern and concised way
-resturantOne ||= 10; 
-resturantTwo ||= 10; 
+resturantOne ||= 10;
+resturantTwo ||= 10;
 console.log(resturantOne, resturantTwo);
 
 //for falsy values use this operator ??= 10 //nullish assignment operator which means null or undefined 
@@ -383,5 +383,311 @@ console.log(resturantTwo, resturantOne)
 //shorthand for AND logical operator 
 resturantTwo.owner &&= '<ANONYMOUS>';
 
+//CODE CHALLENGE 
 
+const Player1 = ['GoalKp1', 'md10', 'marcelo', 'carvajah', 'ronaldo', 'messi', 'KDB'];
+const Player2 = ['GoalKp2', 'Mbappe', 'Lukkaku', 'Nkuku', 'Neymar', 'Big Benz', 'Tchmane'];
+
+const allPlayers = [...Player1, ...Player2];
+
+const PlayersFinal = ['Thiago', 'Coutinho', 'Peristic', ...Player1];
+
+const game = {
+    odd: {
+        team1: 1.34,
+        draw: 3.25,
+        team2: 6.5
+    },
+
+
+    printGoals: function (...players) {
+        console.log(`${players.length}`)
+    }
+
+}
+game.printGoals('kimmich', 'player4')
+
+
+//LOOPING THROUGH ARRAYS
+//FOR OF LOOP
+
+const firstArray = ['me', 'you', 'them', 'their', 'girls', 'boys'];
+const secondArray = ['tee', 'gee', 'us', 'we', 'force', 'go', 'gone'];
+const generalArry = [...firstArray, ...secondArray];
+
+//loop through this array we use a 'For Of' 
+for (const item of generalArry) console.log(item) //all elements are logged through the console. 'item' varaible is always is the current element in each iteration
+
+//we can use the continue and break keywords in the for of 
+
+// so if we want to give each of the array an index on the console we use the entries() method
+
+for (const item of generalArry.entries()) console.log(item) // you see that the individual item has an index position in the array
+
+//so lets see what the .entries() method does 
+
+console.log([...generalArry.entries()])
+
+for (const item of generalArry.entries()) //this returns index numbers
+    console.log(`${item[0] + 1}: ${item[1]}`)
+
+//modern way of doing this by destructuring 
+for (const [a, b] of generalArry.entries())
+    console.log(`${a + 1}: ${b}`);
+
+
+
+//Enhanced Object Literal 
+const weekdaysFMT = ['mon', 'tue', 'weds', 'thurs', 'fri', 'sat', 'sun']
+const labourHours = {
+    [weekdaysFMT[0]]: {
+        open: 12,
+        close: 22,
+    },
+    [weekdaysFMT[3]]: {
+        open: 12,
+        close: 22,
+    },
+    [weekdaysFMT[`day-${2 + 4}`]]: {
+        open: 12,
+        close: 22,
+    },
+}
+
+//so we want to insert the labourhours in the firstObjectInfo in ES6
+const firstObjectInfo = {
+    name: 'Honey Due',
+    location: 'Via Angelo Tavanti 23, Firenze, Italy',
+    mainCategory: ['Vegetarian', 'Organic', 'Pizza', 'Pineapples'],
+    staterFood: ['Yam', 'Egg', 'Stew', 'Garri'],
+    deliveryFood: ['Pizza', 'Burritos', 'Pancakes', 'Beans'],
+
+    mainOrder: function (indexStarter, indexMain) {
+        return [this.mainCategory[indexStarter], this.deliveryFood[indexMain]]
+    },
+
+    orderDelivery: function (obj) {
+        console.log(obj)
+    },
+
+    // labourHours: labourHours, the property name is the same as item name 
+    //ESformat just do this 
+    labourHours,
+
+    //we can perform destructuring here 
+    freeDelivery: function ({ time, Address, indexStarter, indexMain }) {
+        console.log(`Your free deliver food comes with ${this.mainCategory[indexStarter]} and ${this.staterFood[indexMain]} at ${time} and at ${Address}`)
+    },
+
+    //we can also assign values to the destructured items, this works if there's no room to destructure
+
+    firstCustomer: function ({ time = '13:00', Address, indexStarter = 1, indexMain = 0 }) {
+        console.log(`As our first customer you are going to get ${this.mainCategory[indexStarter]} and ${this.deliveryFood[indexMain]} at ${time} and at ${Address}`)
+    },
+
+    pastaDelivery: function (ing1 = 'bucartinni', ing2 = 'Egg roll', ing3 = 'vegetables') {
+        console.log(`here is your delicious pasta made up of ${ing1}, ${ing2} and ${ing3}`)
+    },
+
+    //enhance Methods in ES6
+
+    orderPizza(mainIng, ...otherIng) {  //new format in ES6 method format
+        console.log(mainIng);
+        console.log(otherIng);
+    },
+
+    orderPizza: function (mainIng, ...otherIng) { //old format in ES6 method format
+        console.log(mainIng);
+        console.log(otherIng);
+    }
+
+
+}
+
+console.log(firstObjectInfo);
+
+//Property Names: You want to know the property names in an object 
+const propertyNames = Object.keys(labourHours);
+console.log(propertyNames);
+
+//property values: You want to know the property values in an object 
+const propertyValue = Object.values(labourHours)
+console.log(propertyValue);
+
+
+//loop the entire object
+const loopObj = Object.entries(labourHours);
+console.log(loopObj);
+
+for (const j of loopObj) console.log(j); //loop through the loopObj
+
+for (const [key, { open, close }] of loopObj) console.log(`On ${key} we open at ${open} and ${close}`);
+
+
+//for (const [key,value]) inside value you destructure {open,close}; 
+
+//Coding chanllege
+
+/* 
+
+1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1:Lewandowski")
+*/
+
+//Solution 1. 
+
+const game2 = {
+    team3: 'Bayern Munich',
+    team4: 'Borrussia Dortmund',
+
+    newPlayers: [
+        [
+            'Neuer',
+            'Pavard',
+            'Martinez',
+            'Alaba'
+        ],
+
+        [
+            'Burki',
+            'Schuls',
+            'Hummels',
+            'Akanji',
+            'Hakimi'
+        ],
+    ],
+
+    score: '4:0',
+    scored: ['Lewandowski', 'Hummels', 'Gnarby', 'Lewandowski'],
+    date: 'Nov 9th, 2035',
+    odds: {
+        team2: 1.33,
+        x: 3.25,
+        team3: 6.5,
+    }
+}
+
+//solution 1
+for (const [key, player] of game2.scored.entries()) {
+    console.log(`Goal ${key + 1}: ${player}`)
+}
+
+//calculate the odds average 
+let average = 0;
+const odds = Object.values(game2.odds);
+for (const odd of odds)
+    average += odd;
+average /= odds.length;
+console.log(average)
+
+
+for (const [team, odd] of Object.entries(game2.odds)) {
+    const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`
+    console.log(`odd of ${teamStr}  ${odd}`);
+}
+
+//SET - this is collection of unique values 
+
+const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);
+console.log(ordersSet);
+console.log(new Set('jonas'));
+
+//Size of a set
+console.log(ordersSet.size);
+
+//check if an element is in a set 
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+
+//add a string to a set 
+console.log(ordersSet.add('Onion'));
+
+//delete a set 
+console.log(ordersSet.delete('Pizza'));
+
+//there are no indexes in a set , the values are unique 
+
+for (const order of ordersSet) console.log(order)
+
+//console.log(ordersSet.clear())
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const newStaff = [...new Set(staff)];  //converted it to an array
+
+console.log(newStaff);
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size);
+
+//MAPS FUNDAMENTALS 
+//a map is a data structure we use to map values to keys , we can have any time of keys(object or array)
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Lisbon, Portugal')); //returns the updated maps
+
+rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+.set('open', 11)
+.set('close', 12)
+.set(true, 'We are open :D')
+.set(false, 'We are closed :)')
+
+//if we want to get elements on the set 
+console.log(rest.get('name')); 
+console.log(rest.get(true)); 
+
+const time = 21; 
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')))
+
+console.log(rest.has('categories')); 
+rest.delete(2); 
+console.log(rest); 
+
+console.log(rest.size); 
+//rest.clear(); 
+
+//using objects as keys
+rest.set(document.querySelector('h2'), 'Heading'); 
+console.log(rest);
+
+
+//Map Iteration 
+const arr4 = [1,2]; 
+rest.set(arr4, 'Test')
+console.log(rest.get(arr4))
+
+//new Map 
+
+const question = new Map([
+    ['question', 'What is the best programming language in the world?'], 
+    [1, 'C'],
+    [2, 'Java'],
+    [3, 'JavaScript'],
+    ['Correct', 3],
+    [true, 'Correct'],
+    [false, 'Try again'],
+])
+
+console.log(question); 
+
+//convert objects to Maps 
+const hoursMap = new Map(Object.entries(labourHours)); 
+console.log(hoursMap); 
+
+//sometimes you can convert to an iterable using object.enteries() method
+//Iteration looping using for of
+for (const [key, value] of question){
+    if(typeof key === 'number')
+    console.log(`Answer ${key}: ${value}`)
+}
+
+
+//const userAnswer = Number(prompt('Your Answer')); 
+const userAnswer = 3;
+console.log(question.get(question.get('Correct') === userAnswer));
+console.log(userAnswer);
+
+//covert map to array using spread operator 
+console.log([...question]);
+console.log([...question.keys()]); 
+console.log([...question.entries()]); // same thing with console.log([...question]);
+console.log([...question.values()]);
 
