@@ -625,39 +625,39 @@ rest.set(1, 'Firenze, Italy');
 console.log(rest.set(2, 'Lisbon, Portugal')); //returns the updated maps
 
 rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-.set('open', 11)
-.set('close', 12)
-.set(true, 'We are open :D')
-.set(false, 'We are closed :)')
+    .set('open', 11)
+    .set('close', 12)
+    .set(true, 'We are open :D')
+    .set(false, 'We are closed :)')
 
 //if we want to get elements on the set 
-console.log(rest.get('name')); 
-console.log(rest.get(true)); 
+console.log(rest.get('name'));
+console.log(rest.get(true));
 
-const time = 21; 
+const time = 21;
 console.log(rest.get(time > rest.get('open') && time < rest.get('close')))
 
-console.log(rest.has('categories')); 
-rest.delete(2); 
-console.log(rest); 
+console.log(rest.has('categories'));
+rest.delete(2);
+console.log(rest);
 
-console.log(rest.size); 
+console.log(rest.size);
 //rest.clear(); 
 
 //using objects as keys
-rest.set(document.querySelector('h2'), 'Heading'); 
+rest.set(document.querySelector('h2'), 'Heading');
 console.log(rest);
 
 
 //Map Iteration 
-const arr4 = [1,2]; 
+const arr4 = [1, 2];
 rest.set(arr4, 'Test')
 console.log(rest.get(arr4))
 
 //new Map 
 
 const question = new Map([
-    ['question', 'What is the best programming language in the world?'], 
+    ['question', 'What is the best programming language in the world?'],
     [1, 'C'],
     [2, 'Java'],
     [3, 'JavaScript'],
@@ -666,17 +666,17 @@ const question = new Map([
     [false, 'Try again'],
 ])
 
-console.log(question); 
+console.log(question);
 
 //convert objects to Maps 
-const hoursMap = new Map(Object.entries(labourHours)); 
-console.log(hoursMap); 
+const hoursMap = new Map(Object.entries(labourHours));
+console.log(hoursMap);
 
 //sometimes you can convert to an iterable using object.enteries() method
 //Iteration looping using for of
-for (const [key, value] of question){
-    if(typeof key === 'number')
-    console.log(`Answer ${key}: ${value}`)
+for (const [key, value] of question) {
+    if (typeof key === 'number')
+        console.log(`Answer ${key}: ${value}`)
 }
 
 
@@ -687,7 +687,7 @@ console.log(userAnswer);
 
 //covert map to array using spread operator 
 console.log([...question]);
-console.log([...question.keys()]); 
+console.log([...question.keys()]);
 console.log([...question.entries()]); // same thing with console.log([...question]);
 console.log([...question.values()]);
 
@@ -740,40 +740,40 @@ Data from a web API comes in JSON format.
 //Coding CHX 
 
 const gameEvents = new Map([
-    [17, 'GOAL'], 
-    [36, 'Substitution'], 
-    [47, 'GOAL'], 
-    [61, 'Substitution'], 
-    [64, 'Yellow Card'], 
-    [69, 'Red Card'], 
-    [70, 'Substitution'], 
-    [72, 'Substitution'], 
-    [76, 'GOAL'], 
-    [80, 'GOAL'], 
+    [17, 'GOAL'],
+    [36, 'Substitution'],
+    [47, 'GOAL'],
+    [61, 'Substitution'],
+    [64, 'Yellow Card'],
+    [69, 'Red Card'],
+    [70, 'Substitution'],
+    [72, 'Substitution'],
+    [76, 'GOAL'],
+    [80, 'GOAL'],
     [90, 'Full Time']
 ])
 
-const eventsX = new Set (gameEvents.values())
+const eventsX = new Set(gameEvents.values())
 // to convert this "const events = new Set (gameEvents.values())" into an array we do this 
-const events = [...new Set (gameEvents.values())] //now we have converted to an array
+const events = [...new Set(gameEvents.values())] //now we have converted to an array
 console.log(events)
 
 
-gameEvents.delete(64); 
+gameEvents.delete(64);
 console.log(gameEvents);
 
 //Here we are calculating an average of every 9 mins
-console.log(`An event happened, on average, every ${90/ gameEvents.size} minutes`); 
+console.log(`An event happened, on average, every ${90 / gameEvents.size} minutes`);
 
 //Loop through the map 
-for (const [key,values]of gameEvents){ //key and values could be anything 'min' and 'sec' x and y 
-   const half = key <= 45 ? 'FIRST' : 'SECOND';
-   console.log(`[${half} HALF] ${key}:${values}`);
+for (const [key, values] of gameEvents) { //key and values could be anything 'min' and 'sec' x and y 
+    const half = key <= 45 ? 'FIRST' : 'SECOND';
+    console.log(`[${half} HALF] ${key}:${values}`);
 }
 
 //Working with Strings - PART 1
-const airline = 'TAP Air Portugal'; 
-const plane = 'A320'; 
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
 console.log(plane[0]); //just like arrays 
 console.log('B769E'[0]); //this will be the first element on the string 
 console.log(plane.length);
@@ -787,10 +787,10 @@ console.log(airline.indexOf('portugal')) //this wil be -1
 //Slice Method 
 console.log(airline.slice(4)) //4 is the position the slicing with start to extract. this will return a new string 
 //we can decide where we want to start slicing and where want to end slicing 
-console.log(airline.slice(4,7)) //7 is where the slicing will end.
+console.log(airline.slice(4, 7)) //7 is where the slicing will end.
 
 //When we don't know the position of the string 
-console.log(airline.slice(0, airline.indexOf(' '))); 
+console.log(airline.slice(0, airline.indexOf(' ')));
 console.log(airline.slice(airline.lastIndexOf(' ') + 1)) //it starts from 1 and elimates the space '0'
 
 
@@ -798,14 +798,14 @@ console.log(airline.slice(-2));
 console.log(airline.slice(1, -1));
 
 
-const checkMiddleSeat = function(seat){
-   //B and E are middle seats 
-   const s = seat.slice(-1);
-   if(s === 'B' || s === "E"){
-    console.log('You got the middle seat :)')
-   }else{
-    console.log('You got lucky')
-   }
+const checkMiddleSeat = function (seat) {
+    //B and E are middle seats 
+    const s = seat.slice(-1);
+    if (s === 'B' || s === "E") {
+        console.log('You got the middle seat :)')
+    } else {
+        console.log('You got lucky')
+    }
 }
 
 checkMiddleSeat('11B');
@@ -822,26 +822,189 @@ console.log(typeof new String('Jonas')) //you see that its an Object
 
 console.log(typeof new String('Jonas').slice(1)) //String 
 
-console.log(airline.toLowerCase()); 
+console.log(airline.toLowerCase());
 console.log('Tony'.toLowerCase());
 
 const passenger = 'JoNas'
-const passengerLower = passenger.toLowerCase(); 
-const passengerCorrect = passenger[0].toUpperCase() + passengerLower.slice(1).toLowerCase(); 
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passenger[0].toUpperCase() + passengerLower.slice(1).toLowerCase();
 console.log(passengerCorrect);
 
 
 //Check Input Email /Comparing Emails
-
-const email = 'hello@jonas.io'; 
+const email = 'hello@jonas.io';
 const loginEmail = ' Hello@Jonas.Io \n'
 
-const lowerEmail = loginEmail.toLowerCase(); 
-const trimmedEmail = lowerEmail.trim(); 
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
 console.log(trimmedEmail);
 
-const normalizedEmail = loginEmail.toLowerCase().trim(); 
+const normalizedEmail = loginEmail.toLowerCase().trim();
 console.log(normalizedEmail)
 
-console.log(email === normalizedEmail ? 'Valid Email' : 'Invalid Email'); 
+console.log(email === normalizedEmail ? 'Valid Email' : 'Invalid Email');
 
+//replacing strings 
+
+const priceGB = '288,97E';
+//so we need to replace the pound 'E' to dollar sign $
+const priceUS = priceGB.replace('E', '$').replace(',', '.');
+console.log(priceGB);
+
+//we can replace the entire word not just a single letter
+const announcement = 'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replace('door', 'gate'));
+
+//to make the gate replacement take change on all instances we use something called a regualar expression 
+console.log(announcement.replace(/door/g, 'gate'));
+
+//Booleans Methods 
+
+const plane2 = 'A320neo';
+console.log(plane2.includes('A320')); //true
+console.log(plane2.includes('GoinfA320')); //false
+console.log(plane2.startsWith('Air')); //false
+
+
+if (plane2.startsWith('Airbus') && plane2.endsWith('neo')) {
+    console.log('get ready to fly')
+} else {
+    console.log('Wrong Airline')
+}
+
+
+//Practice exercise 
+const checkBaggage = function (items) {
+    const customerBaggage = items.toLowerCase();
+    if (customerBaggage.includes('knife') || customerBaggage.includes('gun')) {
+        console.log('You are not allowed on Board')
+    } else {
+        console.log('Welcome on Board')
+    }
+}
+
+checkBaggage('I have a laptop and a Knife with me');
+checkBaggage('Socks and camera');
+checkBaggage('Got some sancks and a gun for protction');
+
+//Split and Join
+console.log('a+very+nice+string'.split('+')); //returns an array ["a", "very", "nice", "string"]
+
+console.log('Jonas Schmedtman'.split(' ')) //returns an array ["Jonas", "Schmedtman"]; 
+//So we can use the power of destructuring 
+const [kfirst, ksecond] = 'Jonas Schmedtman'.split(' ');
+const newName = ['Mr', kfirst, ksecond.toUpperCase()].join(' ');  //Here we used the join() method seperate the strings with ' '
+console.log(newName);
+
+const capitalizeName = function (name) {
+    // const passengerName = name[0].toUpperCase() 
+    // console.log(passengerName);
+
+    //we want to caplitalize all the first letter in each word 
+    const passengerName = name.split(' '); //this we return everything to array
+    const passengerUpper = []
+    for (const n of passengerName) { //we are looping through the array
+        passengerUpper.push(n[0].toUpperCase() + n.slice(1));  //n[0] all the first letters to uppercase now we used the method push()
+        //OR 
+        passengerUpper.push(n.replace(n[0], n[0].toUpperCase()))
+    };
+
+    console.log(passengerUpper.join(' '));
+}
+
+capitalizeName('Hello my is James');
+capitalizeName('hello, Please STOP!');
+
+//Padding a string
+
+const firstMessage = 'Go to gate 23!';
+console.log(firstMessage.padStart(25, '+').padEnd(30, '+')); //extend the length of the string to 25 and added extra 5 making it 30;
+console.log(firstMessage.padStart(25, '+').length);// and if we use the .length we have 25
+console.log(firstMessage.padStart(25, '+').padEnd(30, '+').length)// and if we use the .length we have 30
+console.log('Hello'.padEnd(24, '+'))
+
+//Example 
+const masterCard = function (number) {
+    const str = String(number)  //or number + ' '
+    const last = str.slice(-4);
+    return last.padStart(str.length, '*')
+}
+
+console.log(masterCard(45654322345));
+console.log(masterCard('323456543223453453'));
+
+//Repeat Method 
+
+//repeat the same string at the same time 
+const message2 = 'Bad weather... All Departures Delayed... '
+console.log(message2.repeat(5))
+
+
+const planeInLine = function (n) {
+
+    console.log(`There are ${n} planes in line ${'*'.repeat(n)}`)
+}
+
+planeInLine(5);
+planeInLine(25);
+planeInLine(2);
+planeInLine(15);
+
+//string methods you can check Mdn ---- mdn string replace for example 
+
+
+//Coding Chanllenge 
+/*
+  write a program that recieves a list of variables name written in underscore_case and convert them to camelcase. 
+  
+  The input will come from a textarea inserted into the DOM (see code below), and convertion will happen when the button is pressed 
+
+  this test data(pasted to textarea)
+  underscore_case
+  first_name
+  Some_Variable 
+  calculate_AGE
+  delayed_departure
+
+  SHOULD PRODUCE THIS OUTPUT (5 separate console.lof outputs)
+
+  underscoreCase 
+  firstName
+  someVariable
+  calculateAge
+  delayedDeparture
+
+
+*/
+
+//Solution 
+
+const inputField = document.querySelector('#input');
+const clickBTN = document.querySelector('#btn');
+
+clickBTN.addEventListener('click', function () {
+    const data = inputField.value.toLowerCase().trim()
+    const strArray = data.split('\n');
+    for (const n of strArray) {
+        const [zee, jah] = n.toLowerCase().trim().split('_');
+        const output = `${zee}${jah.replace(jah[0], jah[0].toUpperCase())}`;
+        console.log(output);
+    }
+})
+
+
+const flights = '+_Delayed_Depature;fa093766109;txl2133758440;11:25+_Arrival;bru93766109;fao2133758440;11:45+_Delayed_Arrival;hel93766109;fao2133758440;12:05+Depature;fa093766109;lis2133758440;12:30';
+//lets say we get this data from a web API and we need to format nicely into this 
+
+//Delayed Depature from FAO to TXL (11h25)
+//         Arrival from BRU to FAO (11h45)
+// Delayed Arrival from HEL to FAO (12h09)
+//        Depature from FAO to LIS (12h30)
+
+const getCode = str => String(str.slice(0, 3).toUpperCase());
+
+for (const flight of flights.split('+')){
+    const [type, from, to, time] = (flight.split(';')); //loop and convert them to an array
+    const output2 = `${type.startsWith('_Delayed') ? 'X' : ''}${type.replaceAll('_', ' ')} from ${getCode(from)} to ${getCode(to)} (${time.replace(':', 'h')})`.padStart(25, ' ')
+    console.log(output2); 
+}
