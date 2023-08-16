@@ -691,3 +691,157 @@ console.log([...question.keys()]);
 console.log([...question.entries()]); // same thing with console.log([...question]);
 console.log([...question.values()]);
 
+//Data Structures, Modern Operators 
+//When to Use each the data structures 
+
+/* 
+There are three sources of data 
+
+1> The data can be written in the source code (e.g status messages that will be displayed on the browser based on the user's action); 
+
+2> Data from the user or data written in DOM  (e.g tasks in todo app); 
+
+3> Data from an API , external sources -> A WEB API, Application Programming Interface is used to get data from other website. for example using API to get weather chnage in a city
+
+
+//So there's something called collections of data , so we need to collect data and store it somewhere 
+
+//1.--------------------------------------------collection of data--------------------------------------------//
+
+//--------(we store collections of data using "data structures" to store this data collection)---------------------------------------data structures-------------and we know there are four types of DS-------so now we need a way to decide which DS we are going to use -------------------// 
+
+//----HOW TO DECIDE WHAT DATA STRUCTURE TO USE-----//
+1. If we just need a smiple list of values then we just use  an 'ARRAY' or 'Set' (you use arrays when you need ordered list of values which might contain duplicates) also you use Sets when you are working with unique values ,you want to remove duplicates values froma an array and when high performance is important.
+
+
+2. If we need key value pairs then we need an 'OBJECT' or 'MAP' 
+Object is more traditional "Key/Values" i.e name: 'Tunde', also objects are easier to write and access value with .. and [] while on the other hand Map is better performace the key can be any data type i.e task = new Map([
+    [false, 'Start Coding']
+]); Also Maps are easy to compute size , Easy to iterate also. 
+
+Use object when you need a method(functions, the 'this' key word) inside th object and when you are working with JSON 
+Use Map when you simply need to map key to values and when you need keys that are not strings
+
+Data from a web API comes in JSON format.
+{
+    "count": 3, 
+    "recipes": [
+        {
+           "publisher": "101 Cookbooks", 
+           "title": "101 Cookbooks"
+        }
+    ]
+}
+
+//the publisher, title are the keys
+
+*/
+
+//Coding CHX 
+
+const gameEvents = new Map([
+    [17, 'GOAL'], 
+    [36, 'Substitution'], 
+    [47, 'GOAL'], 
+    [61, 'Substitution'], 
+    [64, 'Yellow Card'], 
+    [69, 'Red Card'], 
+    [70, 'Substitution'], 
+    [72, 'Substitution'], 
+    [76, 'GOAL'], 
+    [80, 'GOAL'], 
+    [90, 'Full Time']
+])
+
+const eventsX = new Set (gameEvents.values())
+// to convert this "const events = new Set (gameEvents.values())" into an array we do this 
+const events = [...new Set (gameEvents.values())] //now we have converted to an array
+console.log(events)
+
+
+gameEvents.delete(64); 
+console.log(gameEvents);
+
+//Here we are calculating an average of every 9 mins
+console.log(`An event happened, on average, every ${90/ gameEvents.size} minutes`); 
+
+//Loop through the map 
+for (const [key,values]of gameEvents){ //key and values could be anything 'min' and 'sec' x and y 
+   const half = key <= 45 ? 'FIRST' : 'SECOND';
+   console.log(`[${half} HALF] ${key}:${values}`);
+}
+
+//Working with Strings - PART 1
+const airline = 'TAP Air Portugal'; 
+const plane = 'A320'; 
+console.log(plane[0]); //just like arrays 
+console.log('B769E'[0]); //this will be the first element on the string 
+console.log(plane.length);
+console.log('AYR34JD'.length); //this will also work perfectly 
+
+//String Methods
+console.log(airline.indexOf('r')); //strings are also zero based
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('portugal')) //this wil be -1
+
+//Slice Method 
+console.log(airline.slice(4)) //4 is the position the slicing with start to extract. this will return a new string 
+//we can decide where we want to start slicing and where want to end slicing 
+console.log(airline.slice(4,7)) //7 is where the slicing will end.
+
+//When we don't know the position of the string 
+console.log(airline.slice(0, airline.indexOf(' '))); 
+console.log(airline.slice(airline.lastIndexOf(' ') + 1)) //it starts from 1 and elimates the space '0'
+
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+
+const checkMiddleSeat = function(seat){
+   //B and E are middle seats 
+   const s = seat.slice(-1);
+   if(s === 'B' || s === "E"){
+    console.log('You got the middle seat :)')
+   }else{
+    console.log('You got lucky')
+   }
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+//WHY can we call methods on strings? 
+//So what happens is that JS does the following behind the scene
+console.log(new String('Jonas')); //and as you can see on the console it returns an array and when you click on the prototype you can clear see all the methods we can use on thwe 'Jonas' string 
+
+//and when we use thw typeOf 
+console.log(typeof new String('Jonas')) //you see that its an Object
+//and after JS coverts it to an object and we apply the method that we want JS converts it back toa string after the operation.
+
+console.log(typeof new String('Jonas').slice(1)) //String 
+
+console.log(airline.toLowerCase()); 
+console.log('Tony'.toLowerCase());
+
+const passenger = 'JoNas'
+const passengerLower = passenger.toLowerCase(); 
+const passengerCorrect = passenger[0].toUpperCase() + passengerLower.slice(1).toLowerCase(); 
+console.log(passengerCorrect);
+
+
+//Check Input Email /Comparing Emails
+
+const email = 'hello@jonas.io'; 
+const loginEmail = ' Hello@Jonas.Io \n'
+
+const lowerEmail = loginEmail.toLowerCase(); 
+const trimmedEmail = lowerEmail.trim(); 
+console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim(); 
+console.log(normalizedEmail)
+
+console.log(email === normalizedEmail ? 'Valid Email' : 'Invalid Email'); 
+
